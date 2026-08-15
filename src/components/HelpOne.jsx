@@ -16,6 +16,8 @@ const HelpOne = () => {
                     <img
                       src='/about1.jpg'
                       alt='Al-Khadija care'
+                      loading='lazy'
+                      decoding='async'
                     />
                   </div>
                   <div
@@ -24,8 +26,10 @@ const HelpOne = () => {
                     data-aos-duration={1000}
                   >
                     <img
-                      src='/about-primary.png'
+                      src='/about-primary.jpg'
                       alt='Al-Khadija foundation'
+                      loading='lazy'
+                      decoding='async'
                     />
                     <div className='video-btn-wrapper'>
                       <span
@@ -40,6 +44,8 @@ const HelpOne = () => {
                     <img
                       src='/about2.jpg'
                       alt='Serving humanity'
+                      loading='lazy'
+                      decoding='async'
                     />
                   </div>
                   <div className='line'>

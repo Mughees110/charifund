@@ -52,7 +52,14 @@ const BannerOne = () => {
           </div>
           <div className='col-12 col-lg-5 order-1 order-lg-2'>
             <div className='hero-photo'>
-              <img src='/section1.png' alt='Care and family at Al-Khadija' />
+              <img
+                src='/section1.jpg'
+                alt='Care and family at Al-Khadija'
+                width={1400}
+                height={788}
+                fetchPriority='high'
+                decoding='async'
+              />
             </div>
           </div>
         </div>

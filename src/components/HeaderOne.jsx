@@ -127,7 +127,14 @@ const HeaderOne = () => {
                 <nav className='navbar p-0'>
                   <div className='navbar-logo'>
                     <Link href='/'>
-                      <img src='/logo.png' alt='Al-Khadija' />
+                      <img
+                        src='/logo.png'
+                        alt='Al-Khadija'
+                        width={400}
+                        height={400}
+                        fetchPriority='high'
+                        decoding='async'
+                      />
                       <span className='navbar-brand__name d-xl-none'>
                         Al-Khadija Foundation Trust
                         <em>Pakistan · Est. 2000</em>
@@ -202,7 +209,13 @@ const HeaderOne = () => {
           <div className='mobile-menu__header nav-fade'>
             <div className='logo'>
               <Link href='/' aria-label='home page' title='logo'>
-                <img src='/logo.png' alt='Al-Khadija' />
+                <img
+                  src='/logo.png'
+                  alt='Al-Khadija'
+                  width={400}
+                  height={400}
+                  decoding='async'
+                />
               </Link>
             </div>
             <button

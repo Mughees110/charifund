@@ -41,7 +41,14 @@ const FooterOne = () => {
                     scrollToSection("home");
                   }}
                 >
-                  <img src='/logo.png' alt='Al-Khadija' />
+                  <img
+                    src='/logo.png'
+                    alt='Al-Khadija'
+                    width={400}
+                    height={400}
+                    decoding='async'
+                    loading='lazy'
+                  />
                 </Link>
               </div>
               <div className='footer-two__widget-content'>

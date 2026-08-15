@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 
 const FEATURED = [
   {
-    src: "/eye.png",
+    src: "/eye.jpg",
     alt: "Cataract eye surgeries",
     label: "59 Cataract Surgeries",
   },
   {
-    src: "/prosthetic.png",
+    src: "/prosthetic.jpg",
     alt: "Prosthetic care",
     label: "14 Prosthetic Lives",
   },

@@ -8,7 +8,7 @@ const documentaries = [
     title: "Al-Khadija: A Story of Care",
     subtitle:
       "Filmed in 2013 — capturing the heart of our journey of service, and the lives touched by care.",
-    thumb: "/thumbnail1.png",
+    thumb: "/thumbnail1.jpg",
     year: "2013",
   },
 ];

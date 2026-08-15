@@ -1,6 +1,6 @@
 const journeyImages = [
-  { src: "/cons/1.png", alt: "Al-Khadija journey — moment 1", wide: true },
-  { src: "/cons/2.png", alt: "Al-Khadija journey — moment 2", wide: true },
+  { src: "/cons/1.jpg", alt: "Al-Khadija journey — moment 1", wide: true },
+  { src: "/cons/2.jpg", alt: "Al-Khadija journey — moment 2", wide: true },
   { src: "/cons/3.jpg", alt: "Al-Khadija journey — moment 3", wide: true },
   { src: "/cons/4.jpg", alt: "Al-Khadija journey — moment 4", wide: false },
   { src: "/cons/5.jpg", alt: "Al-Khadija journey — moment 5", wide: false },

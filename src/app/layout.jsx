@@ -35,6 +35,9 @@ export default function RootLayout({ children }) {
           rel='stylesheet'
         />
 
+        <link rel='preload' as='image' href='/logo.png' type='image/png' />
+        <link rel='preload' as='image' href='/section1.jpg' type='image/jpeg' />
+
         <link rel='stylesheet' href='/assets/fonts/css/all.min.css' />
         <link rel='stylesheet' href='/assets/fonts/css/flag-icons.min.css' />
         <link rel='stylesheet' href='/assets/fonts/css/charifund.css' />
