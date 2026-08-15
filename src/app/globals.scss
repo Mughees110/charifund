@@ -564,6 +564,16 @@ body.dark-body {
   &::after {
     display: none;
   }
+
+  /* Mobile: title is partly in view already — don't wait for AOS scroll */
+  @media (max-width: 991.98px) {
+    .section__header[data-aos] {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+      pointer-events: auto !important;
+    }
+  }
 }
 
 /* Section 3 About */
