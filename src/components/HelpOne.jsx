@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import { useState } from "react";
 import ModalVideo from "react-modal-video";
 
@@ -7,16 +6,16 @@ const HelpOne = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <section className='help'>
+      <section id='about' className='help help--about'>
         <div className='container'>
           <div className='row align-items-center gutter-40'>
-            <div className='col-12 col-lg-5 col-xxl-6 d-none d-lg-block'>
+            <div className='col-12 col-lg-5 col-xxl-6'>
               <div className='help__thumb'>
                 <div className='help__thumb-inner'>
                   <div className='thumb-top thumb'>
                     <img
-                      src='/assets/images/help/thumb-top.png'
-                      alt='Image_inner'
+                      src='/about1.jpg'
+                      alt='Al-Khadija care'
                     />
                   </div>
                   <div
@@ -25,8 +24,8 @@ const HelpOne = () => {
                     data-aos-duration={1000}
                   >
                     <img
-                      src='/assets/images/help/thumb-lg.png'
-                      alt='Image_inner'
+                      src='/about-primary.png'
+                      alt='Al-Khadija foundation'
                     />
                     <div className='video-btn-wrapper'>
                       <span
@@ -39,8 +38,8 @@ const HelpOne = () => {
                   </div>
                   <div className='thumb thumb-bottom'>
                     <img
-                      src='/assets/images/help/thumb-bottom.png'
-                      alt='Image_inner'
+                      src='/about2.jpg'
+                      alt='Serving humanity'
                     />
                   </div>
                   <div className='line'>
@@ -55,7 +54,7 @@ const HelpOne = () => {
                   </div>
                   <div className='vertical-text'>
                     <h5>
-                      We Give <span>Donations</span> to Poor People{" "}
+                      Serving <span>Humanity</span> Since 2000
                     </h5>
                   </div>
                 </div>
@@ -65,36 +64,41 @@ const HelpOne = () => {
               <div className='help__content'>
                 <span className='sub-title'>
                   <i className='icon-donation' />
-                  Start donating poor people
+                  About Al-Khadija
                 </span>
                 <h2 className='title-animation_inner'>
-                  Helping each other can make <span>world</span> better
+                  Every life valued. Every hand{" "}
+                  <span>reached</span> with care.
                 </h2>
                 <p>
-                  Volunteering offers opportunities to develop new skills and
-                  gain valuable experience. This can include leadership,
-                  communication, project management, and teamwork skills.
+                  About 25 years ago, philanthropists joined hands to support
+                  the deserving with limited means. On{" "}
+                  <strong>1st January, 2000</strong>, that spirit became{" "}
+                  <strong>Al-Khadija Foundation</strong> — hope, run by the
+                  common man, for the common man.
                 </p>
                 <div className='help__content-icon-group'>
-                  <div className='help__content-icon'>
-                    <div className='thumb'>
-                      <i className='icon-make-donation' />
-                    </div>
-                    <div className='content'>
-                      <h6>Start helping them</h6>
-                      <p>
-                        Raising awareness about the charity's mission and cause.
-                      </p>
-                    </div>
-                  </div>
                   <div className='help__content-icon'>
                     <div className='thumb'>
                       <i className='icon-support-heart' />
                     </div>
                     <div className='content'>
-                      <h6>Make Donations</h6>
+                      <h6>Our Vision</h6>
                       <p>
-                        Raising awareness about the charity's mission and cause.
+                        A world where every life is valued, and quality health
+                        care and basic education are available to all.
+                      </p>
+                    </div>
+                  </div>
+                  <div className='help__content-icon'>
+                    <div className='thumb'>
+                      <i className='icon-make-donation' />
+                    </div>
+                    <div className='content'>
+                      <h6>Our Mission</h6>
+                      <p>
+                        Serve ailing humanity, ease radical poverty, and light
+                        the path out of ignorance.
                       </p>
                     </div>
                   </div>
@@ -102,36 +106,54 @@ const HelpOne = () => {
                 <div className='help__content-list'>
                   <ul>
                     <li>
-                      <i className='fa-solid fa-circle-check' /> Helped fund
-                      3,265 Project powerful corporate poor.
+                      <i className='fa-solid fa-circle-check' /> Care beyond
+                      socio-religious boundaries
                     </li>
                     <li>
-                      <i className='fa-solid fa-circle-check' /> We give child a
-                      gift of a education
+                      <i className='fa-solid fa-circle-check' /> Healthcare and
+                      education for the deprived
                     </li>
                     <li>
-                      <i className='fa-solid fa-circle-check' /> We help
-                      companies develop powerful corporate social
-                      Responsibility,
+                      <i className='fa-solid fa-circle-check' /> Community hope
+                      — by the people, for the people
                     </li>
                   </ul>
                 </div>
                 <div className='help__content-cta cta'>
-                  <Link
-                    href='/about-us'
-                    aria-label='more about us'
-                    title='about us'
+                  <a
+                    href='#donate'
+                    aria-label='support our mission'
+                    title='support our mission'
                     className='btn--primary'
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document
+                        .getElementById("donate")
+                        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+                    }}
                   >
-                    More About Us
-                  </Link>
+                    Support Our Mission
+                  </a>
                   <div className='contact-btn'>
                     <div className='contact-icon'>
                       <i className='icon-phone' />
                     </div>
                     <div className='contact-content'>
-                      <p>Phone</p>
-                      <a href='tel:01-793-7938'>+236 (456) 896 22</a>
+                      <p>Need help?</p>
+                      <a
+                        href='#contact'
+                        onClick={(e) => {
+                          e.preventDefault();
+                          document
+                            .getElementById("contact")
+                            ?.scrollIntoView({
+                              behavior: "smooth",
+                              block: "start",
+                            });
+                        }}
+                      >
+                        Contact Us
+                      </a>
                     </div>
                   </div>
                 </div>

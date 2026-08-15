@@ -3,6 +3,17 @@
  ==== */
 
 :root {
+  /* =========================================================
+     ★ BRAND COLOR — change ONLY this one value
+     Buttons, topbar, footer, headings, links all follow it.
+     ========================================================= */
+  --brand: #1e88d0;
+
+  // logo support accents (optional)
+  --brand-blue: #1e88d0;
+  --brand-peach: #f59773;
+  --brand-green: #6bc02a;
+
   // font family
   --nunito: "Nunito", sans-serif;
   --nunito-sans: "Nunito Sans", sans-serif;
@@ -12,19 +23,21 @@
   // template default
   --template-font: var(--nunito);
   --template-bg: #ffffff;
-  --template-color: #667471;
+  --template-color: #5b6b78;
 
-  // colors
+  // colors — all brand-driven
   --white: #ffffff;
   --black: #000000;
-  --primary-color: #046a58;
-  --secondary-color: #122f2a;
-  --tertiary-color: #046a58;
-  --quaternary-color: #00715d;
-  --quinary-color: #061408;
-  --septenary-color: #0c141f;
+  --primary-color: var(--brand);
+  /* dark chrome (topbar + footer) — derived from --brand, not fixed green */
+  --secondary-color: color-mix(in srgb, var(--brand) 28%, #0a1014 72%);
+  --tertiary-color: var(--brand);
+  --quaternary-color: color-mix(in srgb, var(--brand) 82%, #000);
+  --quinary-color: color-mix(in srgb, var(--brand) 14%, #070b0e 86%);
+  --septenary-color: color-mix(in srgb, var(--brand) 10%, #06090c 90%);
   --senary-color: #d9d9d9;
-  --hover-color: #6b5103;
+  --hover-color: color-mix(in srgb, var(--brand) 78%, #000);
+  --base-color: var(--brand);
 
   // transitions
   --transition: all 0.5s ease;

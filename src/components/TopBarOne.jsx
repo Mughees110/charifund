@@ -92,15 +92,15 @@ const TopBarOne = () => {
                   <div className="topbar__list-wrapper">
                     <ul className="topbar__list">
                       <li>
-                        <a href="mailto:support@example.com">
+                        <a href="mailto:info@alkhadija.com">
                           <i className="fa-regular fa-envelope"></i>
-                          support@example.com
+                          info@alkhadija.com
                         </a>
                       </li>
                       <li>
-                        <a href="tel:2305-587-3407">
+                        <a href="tel:04237415120">
                           <i className="fa-solid fa-phone"></i>
-                          +2(305) 587-3407
+                          042-37415120
                         </a>
                       </li>
                     </ul>

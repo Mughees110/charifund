@@ -1,9 +1,13 @@
-// default theme
+// Follows --brand from abstracts/_variables.scss
 :root {
-  --base-color: #ffc107;
+  --base-color: var(--brand);
 }
 
 .base-img {
-  filter: brightness(0) saturate(100%) invert(76%) sepia(74%) saturate(1946%)
-    hue-rotate(354deg) brightness(104%) contrast(102%);
+  filter: brightness(0) saturate(100%) invert(58%) sepia(74%) saturate(480%)
+    hue-rotate(50deg) brightness(95%) contrast(92%);
+}
+
+.bottom-line {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='196' height='15' viewBox='0 0 196 15' fill='none'%3E %3Cpath d='M1 13C42.1844 2.92057 142.978 -3.87406 195 9.2668' stroke='%236bc02a' stroke-width='4'/%3E %3C/svg%3E");
 }

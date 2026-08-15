@@ -1,10 +1,13 @@
 "use client";
 import TrackVisibility from "react-on-screen";
 import CountUp from "react-countup";
-import Link from "next/link";
+
 const CounterTwo = () => {
   return (
-    <section className='counter-four pt-120 pb-120'>
+    <section
+      id='impact'
+      className='counter-four impact-section pt-120 pb-120'
+    >
       <div className='container'>
         <div className='row justify-content-center'>
           <div className='col-12 col-lg-10 col-xl-9'>
@@ -13,10 +16,10 @@ const CounterTwo = () => {
               data-aos='fade-up'
               data-aos-duration={1000}
             >
-              <span className='sub-title'>We are always open for children</span>
+              <span className='sub-title'>Every life restored matters</span>
               <h3 className='title-animation_inner fw-5'>
-                Join Our Community of Donors and Volunteers: Be Part of Positive
-                Change in the World
+                Behind every number is a mother, a father, a child who found
+                hope again
               </h3>
             </div>
           </div>
@@ -29,25 +32,45 @@ const CounterTwo = () => {
                   {({ isVisible }) =>
                     isVisible && (
                       <span className='odometer fw-8'>
-                        <CountUp delay={0} start={0} end={154859} />
-                        <span className='prefix'>+</span>
+                        <CountUp
+                          delay={0}
+                          start={0}
+                          end={2.024}
+                          decimals={3}
+                          decimal='.'
+                        />
+                        <span className='prefix'> Million+</span>
                       </span>
                     )
                   }
                 </TrackVisibility>
               </h2>
               <p className='text-xl'>
-                Join the Many Who Already Support Our Mission
+                People served and treated with compassion till 2025
+              </p>
+              <p
+                className='mt-3'
+                style={{ maxWidth: 640, marginLeft: "auto", marginRight: "auto" }}
+              >
+                From emergency care to quiet recoveries, each life we touch is a
+                promise kept — that dignity and healing should never be out of
+                reach.
               </p>
               <div className='cta'>
-                <Link
-                  href='/become-volunteer'
-                  aria-label='join our community'
-                  title='join our community'
+                <a
+                  href='#donate'
+                  aria-label='help the next patient'
+                  title='help the next patient'
                   className='btn--primary'
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document
+                      .getElementById("donate")
+                      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }}
                 >
-                  Join Our Community
-                </Link>
+                  Help the Next Patient
+                </a>
               </div>
             </div>
           </div>

@@ -1,19 +1,32 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { usePathname } from "next/navigation";
 import Link from "next/link";
 
+const NAV_LINKS = [
+  { id: "impact", label: "Impact" },
+  { id: "about", label: "About" },
+  { id: "journey", label: "Journey" },
+  { id: "documentaries", label: "Documentaries" },
+  { id: "facilities", label: "Facilities" },
+  { id: "special-work", label: "Special Work" },
+  { id: "past-work", label: "Past Work" },
+  { id: "contact", label: "Contact" },
+];
+
 const HeaderOne = () => {
-  let pathname = usePathname();
-  let [search, setSearch] = useState(false);
   let [mobileMenu, setMobileMenu] = useState(false);
   const [scroll, setScroll] = useState(false);
-  const handleSearch = () => {
-    setSearch(!search);
-  };
   const handleMobileMenu = () => {
     setMobileMenu(!mobileMenu);
   };
+
+  const scrollToSection = (id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    setMobileMenu(false);
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
 
   useEffect(() => {
     window.onscroll = () => {
@@ -86,6 +99,19 @@ const HeaderOne = () => {
       };
 
       setupDropdownToggles(mobileMenuListRef.current);
+
+      mobileMenuListRef.current
+        .querySelectorAll('a[href^="#"]')
+        .forEach((anchor) => {
+          anchor.addEventListener("click", (e) => {
+            e.preventDefault();
+            const id = anchor.getAttribute("href")?.replace("#", "");
+            if (!id) return;
+            setMobileMenu(false);
+            const el = document.getElementById(id);
+            if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+          });
+        });
     }
   }, []);
 
@@ -101,408 +127,29 @@ const HeaderOne = () => {
                 <nav className='navbar p-0'>
                   <div className='navbar-logo'>
                     <Link href='/'>
-                      <img src='/assets/images/logo.png' alt='Image_inner' />
+                      <img src='/logo.png' alt='Al-Khadija' />
+                      <span className='navbar-brand__name d-xl-none'>
+                        Al-Khadija Foundation Trust
+                        <em>Pakistan · Est. 2000</em>
+                      </span>
                     </Link>
                   </div>
                   <div className='navbar__menu-wrapper'>
                     <div className='navbar__menu d-none d-xl-block'>
                       <ul className='navbar__list'>
-                        <li
-                          className={`navbar__item navbar__item--has-children nav-fade ${
-                            pathname === "/" ? "active" : ""
-                          }`}
-                        >
-                          <Link
-                            href='#'
-                            aria-label='dropdown menu'
-                            className='navbar__dropdown-label dropdown-label-alter'
-                          >
-                            Home
-                          </Link>
-                          <ul className='navbar__sub-menu mega-menu'>
-                            <li>
-                              <div className='mega-content-wrapper'>
-                                <img
-                                  src='/assets/images/home-one.png'
-                                  alt='Image_inner'
-                                />
-                                <div className='mega-content'>
-                                  <Link href='/' className='btn--primary'>
-                                    Demo
-                                  </Link>
-                                </div>
-                              </div>
-                              <Link href='/'>Home One</Link>
-                            </li>
-                            <li>
-                              <div className='mega-content-wrapper'>
-                                <img
-                                  src='/assets/images/home-two.png'
-                                  alt='Image_inner'
-                                />
-                                <div className='mega-content'>
-                                  <Link
-                                    href='/index-two'
-                                    className='btn--secondary'
-                                  >
-                                    Demo
-                                  </Link>
-                                </div>
-                              </div>
-                              <Link href='/index-two'>Home Two</Link>
-                            </li>
-                            <li>
-                              <div className='mega-content-wrapper'>
-                                <img
-                                  src='/assets/images/home-three.png'
-                                  alt='Image_inner'
-                                />
-                                <div className='mega-content'>
-                                  <Link
-                                    href='/index-three'
-                                    className='btn--primary'
-                                  >
-                                    Demo
-                                  </Link>
-                                </div>
-                              </div>
-                              <Link href='/index-three'>Home Three</Link>
-                            </li>
-                            <li>
-                              <div className='mega-content-wrapper'>
-                                <img
-                                  src='/assets/images/home-four.png'
-                                  alt='Image_inner'
-                                />
-                                <div className='mega-content'>
-                                  <Link
-                                    href='/index-four'
-                                    className='btn--primary'
-                                  >
-                                    Demo
-                                  </Link>
-                                </div>
-                                <span className='new'>New</span>
-                              </div>
-                              <Link href='/index-four'>Home Four</Link>
-                            </li>
-                            <li>
-                              <div className='mega-content-wrapper'>
-                                <img
-                                  src='/assets/images/home-five.png'
-                                  alt='Image_inner'
-                                />
-                                <div className='mega-content'>
-                                  <Link
-                                    href='/index-five'
-                                    className='btn--primary'
-                                  >
-                                    Demo
-                                  </Link>
-                                </div>
-                                <span className='new'>New</span>
-                              </div>
-                              <Link href='/index-five'>Home Five</Link>
-                            </li>
-                          </ul>
-                        </li>
-                        <li
-                          className={`navbar__item nav-fade ${
-                            ["/about-us"].includes(pathname) ? "active" : ""
-                          }`}
-                        >
-                          <Link href='/about-us'>About Us</Link>
-                        </li>
-                        <li
-                          className={`navbar__item navbar__item--has-children nav-fade ${
-                            ["/our-causes", "/cause-details"].includes(pathname)
-                              ? "active"
-                              : ""
-                          }`}
-                        >
-                          <Link
-                            href='#'
-                            aria-label='dropdown menu'
-                            className='navbar__dropdown-label dropdown-label-alter'
-                          >
-                            Causes
-                          </Link>
-                          <ul className='navbar__sub-menu'>
-                            <li
-                              className={
-                                ["/our-causes"].includes(pathname)
-                                  ? "active"
-                                  : ""
-                              }
+                        {NAV_LINKS.map((item) => (
+                          <li className='navbar__item nav-fade' key={item.id}>
+                            <a
+                              href={`#${item.id}`}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                scrollToSection(item.id);
+                              }}
                             >
-                              <Link href='/our-causes'>Our Causes</Link>
-                            </li>
-                            <li
-                              className={
-                                ["/cause-details"].includes(pathname)
-                                  ? "active"
-                                  : ""
-                              }
-                            >
-                              <Link href='/cause-details'>Cause Details</Link>
-                            </li>
-                          </ul>
-                        </li>
-                        <li
-                          className={`navbar__item navbar__item--has-children nav-fade ${
-                            [
-                              "/faq",
-                              "/donate-us",
-                              "/become-volunteer",
-                              "/events",
-                              "/event-details",
-                              "/shop",
-                              "/product-details",
-                              "/cart",
-                              "/checkout",
-                            ].includes(pathname)
-                              ? "active"
-                              : ""
-                          }`}
-                        >
-                          <Link
-                            href='#'
-                            aria-label='dropdown menu'
-                            className='navbar__dropdown-label dropdown-label-alter'
-                          >
-                            Pages
-                          </Link>
-                          <ul className='navbar__sub-menu'>
-                            <li
-                              className={
-                                ["/faq"].includes(pathname) ? "active" : ""
-                              }
-                            >
-                              <Link href='/faq'>FAQ</Link>
-                            </li>
-                            <li
-                              className={
-                                ["/donate-us"].includes(pathname)
-                                  ? "active"
-                                  : ""
-                              }
-                            >
-                              <Link href='/donate-us'>Donate Us</Link>
-                            </li>
-                            <li
-                              className={
-                                ["/become-volunteer"].includes(pathname)
-                                  ? "active"
-                                  : ""
-                              }
-                            >
-                              <Link href='/become-volunteer'>
-                                Become Volunteer
-                              </Link>
-                            </li>
-                            <li
-                              className={`navbar__item navbar__item--has-children ${
-                                ["/events", "/event-details"].includes(pathname)
-                                  ? "active"
-                                  : ""
-                              }`}
-                            >
-                              <Link
-                                href='#'
-                                aria-label='dropdown menu'
-                                className='navbar__dropdown-label navbar__dropdown-label-sub'
-                              >
-                                Events
-                              </Link>
-                              <ul className='navbar__sub-menu navbar__sub-menu__nested'>
-                                <li
-                                  className={
-                                    ["/events"].includes(pathname)
-                                      ? "active"
-                                      : ""
-                                  }
-                                >
-                                  <Link href='/events'>Events</Link>
-                                </li>
-                                <li
-                                  className={
-                                    ["/event-details"].includes(pathname)
-                                      ? "active"
-                                      : ""
-                                  }
-                                >
-                                  <Link href='/event-details'>
-                                    Event Details
-                                  </Link>
-                                </li>
-                              </ul>
-                            </li>
-                            <li
-                              className={`navbar__item navbar__item--has-children ${
-                                [
-                                  "/shop",
-                                  "/product-details",
-                                  "/cart",
-                                  "/checkout",
-                                ].includes(pathname)
-                                  ? "active"
-                                  : ""
-                              }`}
-                            >
-                              <Link
-                                href='#'
-                                aria-label='dropdown menu'
-                                className='navbar__dropdown-label navbar__dropdown-label-sub'
-                              >
-                                Shop
-                              </Link>
-                              <ul className='navbar__sub-menu navbar__sub-menu__nested'>
-                                <li
-                                  className={
-                                    ["/shop"].includes(pathname) ? "active" : ""
-                                  }
-                                >
-                                  <Link href='/shop'>Our Shop</Link>
-                                </li>
-                                <li
-                                  className={
-                                    ["/product-details"].includes(pathname)
-                                      ? "active"
-                                      : ""
-                                  }
-                                >
-                                  <Link href='/product-details'>
-                                    Product Details
-                                  </Link>
-                                </li>
-                                <li
-                                  className={
-                                    ["/cart"].includes(pathname) ? "active" : ""
-                                  }
-                                >
-                                  <Link href='/cart'>View Cart</Link>
-                                </li>
-                                <li
-                                  className={
-                                    ["/checkout"].includes(pathname)
-                                      ? "active"
-                                      : ""
-                                  }
-                                >
-                                  <Link href='/checkout'>Cehckout</Link>
-                                </li>
-                              </ul>
-                            </li>
-                            <li
-                              className={`navbar__item navbar__item--has-children ${
-                                ["/our-team", "/team-details"].includes(
-                                  pathname
-                                )
-                                  ? "active"
-                                  : ""
-                              }`}
-                            >
-                              <Link
-                                href='#'
-                                aria-label='dropdown menu'
-                                className='navbar__dropdown-label navbar__dropdown-label-sub'
-                              >
-                                Team
-                              </Link>
-                              <ul className='navbar__sub-menu navbar__sub-menu__nested'>
-                                <li
-                                  className={
-                                    ["/our-team"].includes(pathname)
-                                      ? "active"
-                                      : ""
-                                  }
-                                >
-                                  <Link href='/our-team'>Our Teams</Link>
-                                </li>
-                                <li
-                                  className={
-                                    ["/team-details"].includes(pathname)
-                                      ? "active"
-                                      : ""
-                                  }
-                                >
-                                  <Link href='/team-details'>Team Details</Link>
-                                </li>
-                              </ul>
-                            </li>
-                            <li
-                              className={
-                                ["/coming-soon"].includes(pathname)
-                                  ? "active"
-                                  : ""
-                              }
-                            >
-                              <Link href='/coming-soon'>Coming Soon</Link>
-                            </li>
-                            <li
-                              className={
-                                ["/404"].includes(pathname) ? "active" : ""
-                              }
-                            >
-                              <Link href='/404'>Error</Link>
-                            </li>
-                          </ul>
-                        </li>
-                        <li
-                          className={`navbar__item navbar__item--has-children nav-fade ${
-                            [
-                              "/blog-list",
-                              "/blog-grid",
-                              "/blog-details",
-                            ].includes(pathname)
-                              ? "active"
-                              : ""
-                          } `}
-                        >
-                          <Link
-                            href='/'
-                            aria-label='dropdown menu'
-                            className='navbar__dropdown-label dropdown-label-alter'
-                          >
-                            News
-                          </Link>
-                          <ul className='navbar__sub-menu'>
-                            <li
-                              className={
-                                ["/blog-list"].includes(pathname)
-                                  ? "active"
-                                  : ""
-                              }
-                            >
-                              <Link href='/blog-list'>News List View</Link>
-                            </li>
-                            <li
-                              className={
-                                ["/blog-grid"].includes(pathname)
-                                  ? "active"
-                                  : ""
-                              }
-                            >
-                              <Link href='/blog-grid'>News Grid View</Link>
-                            </li>
-                            <li
-                              className={
-                                ["/blog-details"].includes(pathname)
-                                  ? "active"
-                                  : ""
-                              }
-                            >
-                              <Link href='/blog-details'>News Details</Link>
-                            </li>
-                          </ul>
-                        </li>
-                        <li
-                          className={`navbar__item nav-fade ${
-                            ["/contact-us"].includes(pathname) ? "active" : ""
-                          } `}
-                        >
-                          <Link href='/contact-us'>Contact Us</Link>
-                        </li>
+                              {item.label}
+                            </a>
+                          </li>
+                        ))}
                       </ul>
                     </div>
                     <div className='contact-btn'>
@@ -511,28 +158,22 @@ const HeaderOne = () => {
                       </div>
                       <div className='contact-content'>
                         <p>Call Us Now</p>
-                        <a href='tel:01-793-7938'>(+01)-793-7938 </a>
+                        <a href='tel:04237415120'>042-37415120</a>
                       </div>
                     </div>
                   </div>
                   <div className='navbar__options'>
                     <div className='navbar__mobile-options '>
-                      <div className='search-box'>
-                        <button
-                          onClick={handleSearch}
-                          className='open-search'
-                          aria-label='search products'
-                          title='open search box'
-                        >
-                          <i className='fa-solid fa-magnifying-glass' />
-                        </button>
-                      </div>
-                      <Link
-                        href='/donate-us'
+                      <a
+                        href='#donate'
                         className='btn--primary d-none d-md-flex'
+                        onClick={(e) => {
+                          e.preventDefault();
+                          scrollToSection("donate");
+                        }}
                       >
                         Donate Now <i className='fa-solid fa-arrow-right' />
-                      </Link>
+                      </a>
                     </div>
                     <button
                       onClick={handleMobileMenu}
@@ -550,39 +191,6 @@ const HeaderOne = () => {
             </div>
           </div>
         </div>
-
-        <div
-          className={`${
-            search ? "search-active search-popup" : "search-popup"
-          }`}
-        >
-          <button
-            onClick={handleSearch}
-            className='close-search'
-            aria-label='close search box'
-            title='close search box'
-          >
-            <i className='fa-solid fa-xmark' />
-          </button>
-          <form action='#' method='post'>
-            <div className='search-popup__group'>
-              <input
-                type='text'
-                name='search-field'
-                id='searchField'
-                placeholder='Search....'
-                required=''
-              />
-              <button
-                type='submit'
-                aria-label='search products'
-                title='search products'
-              >
-                <i className='fa-solid fa-magnifying-glass' />
-              </button>
-            </div>
-          </form>
-        </div>
       </header>
 
       <div
@@ -594,7 +202,7 @@ const HeaderOne = () => {
           <div className='mobile-menu__header nav-fade'>
             <div className='logo'>
               <Link href='/' aria-label='home page' title='logo'>
-                <img src='assets/images/logo.png' alt='Image_inner' />
+                <img src='/logo.png' alt='Al-Khadija' />
               </Link>
             </div>
             <button
@@ -608,9 +216,16 @@ const HeaderOne = () => {
           <div className='mobile-menu__list' ref={mobileMenuListRef}></div>
 
           <div className='mobile-menu__cta nav-fade d-block d-md-none'>
-            <Link href='/donate-us' className='btn--primary '>
+            <a
+              href='#donate'
+              className='btn--primary '
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection("donate");
+              }}
+            >
               Donate Now <i className='fa-solid fa-arrow-right' />
-            </Link>
+            </a>
           </div>
           <div className='mobile-menu__social social nav-fade'>
             <Link

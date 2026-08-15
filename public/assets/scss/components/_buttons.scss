@@ -5,7 +5,7 @@
 .btn--primary {
   padding: 13px 24px;
   background-color: var(--base-color);
-  color: var(--black);
+  color: var(--white);
   position: relative;
   font-weight: 800;
   z-index: 1;
@@ -18,7 +18,7 @@
   }
 
   path {
-    fill: black;
+    fill: white;
     transition: var(--transition);
   }
   &::before,

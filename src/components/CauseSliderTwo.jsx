@@ -67,7 +67,6 @@ const CauseSliderTwo = () => {
       <section className='cause-two'>
         <div className='container-fluid'>
           <div className='cause-two__inner'>
-            {/* Arrows */}
             <div className='slider-navigation'>
               <button
                 className='prev-cause-two slider-btn'
@@ -83,7 +82,6 @@ const CauseSliderTwo = () => {
               </button>
             </div>
 
-            {/* Thumbnail Slider */}
             <Slider {...imageSettings} className='cause-two__slider'>
               {images.map((img, index) => (
                 <div key={index} className='cause-two__slider-single'>
@@ -97,7 +95,6 @@ const CauseSliderTwo = () => {
               ))}
             </Slider>
 
-            {/* Content Slider */}
             <Slider {...contentSettings} className='cause-two__content-slider'>
               {texts.map((text, index) => (
                 <div key={index} className='cause-content'>

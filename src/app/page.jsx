@@ -1,18 +1,16 @@
 import BannerOne from "@/components/BannerOne";
-import BlogOne from "@/components/BlogOne";
-import CauseOne from "@/components/CauseOne";
-import CauseSliderTwo from "@/components/CauseSliderTwo";
-import CommunityOne from "@/components/CommunityOne";
-import CtaSectionOne from "@/components/CtaSectionOne";
+import ContactSectionOne from "@/components/ContactSectionOne";
+import CounterTwo from "@/components/CounterTwo";
 import DifferenceOne from "@/components/DifferenceOne";
-import DifferenceTwo from "@/components/DifferenceTwo";
+import DonationFutureOne from "@/components/DonationFutureOne";
 import FooterOne from "@/components/FooterOne";
+import GalleryOne from "@/components/GalleryOne";
+import GalleryTwo from "@/components/GalleryTwo";
 import HeaderOne from "@/components/HeaderOne";
 import HelpOne from "@/components/HelpOne";
-import PartnerOne from "@/components/PartnerOne";
+import HelpTwo from "@/components/HelpTwo";
+import PastWorkOne from "@/components/PastWorkOne";
 import Preloader from "@/components/Preloader";
-import TeamOne from "@/components/TeamOne";
-import TestimonialOne from "@/components/TestimonialOne";
 import TopBarOne from "@/components/TopBarOne";
 import AOSWrap from "@/helper/AOSWrap";
 import CustomCursor from "@/helper/CustomCursor";
@@ -26,55 +24,41 @@ const page = () => {
   return (
     <AOSWrap>
       <section className='page-wrapper'>
-        {/* Preloader */}
         <Preloader />
-
-        {/* CustomCursor  */}
         <CustomCursor />
-
-        {/* TopBarOne */}
         <TopBarOne />
-
-        {/* HeaderOne */}
         <HeaderOne />
 
-        {/* BannerOne */}
+        {/* Section 1 — Hero */}
         <BannerOne />
 
-        {/* PartnerOne */}
-        <PartnerOne />
+        {/* Section 2 — Impact */}
+        <CounterTwo />
 
-        {/* DifferenceOne */}
-        <DifferenceOne />
-
-        {/* HelpOne */}
+        {/* Section 3 — About / Mission */}
         <HelpOne />
 
-        {/* CauseOne */}
-        <CauseOne />
+        {/* Section 4 — Journey */}
+        <GalleryOne />
 
-        {/* CtaSectionOne */}
-        <CtaSectionOne />
+        {/* Section 5 — Documentaries */}
+        <GalleryTwo />
 
-        {/* TeamOne */}
-        <TeamOne />
+        {/* Section 6 — Facilities */}
+        <DifferenceOne />
 
-        {/* CommunityOne */}
-        <CommunityOne />
+        {/* Section 7 — Special Work */}
+        <HelpTwo />
 
-        {/* TestimonialOne */}
-        <TestimonialOne />
+        {/* Section 8 — Past Work */}
+        <PastWorkOne />
 
-        {/* CauseSliderTwo */}
-        <CauseSliderTwo />
+        {/* Section 9 — Appeal / Donate */}
+        <DonationFutureOne />
 
-        {/* DifferenceTwo */}
-        <DifferenceTwo />
+        {/* Section 10 — Contact */}
+        <ContactSectionOne />
 
-        {/* BlogOne */}
-        <BlogOne />
-
-        {/* FooterOne */}
         <FooterOne />
       </section>
     </AOSWrap>

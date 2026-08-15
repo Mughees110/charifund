@@ -1,268 +1,63 @@
 "use client";
-import Link from "next/link";
-import { useRef } from "react";
-import Slider from "react-slick";
 
 const BannerOne = () => {
-  const sliderRef = useRef(null);
-  const settings = {
-    infinite: true,
-    speed: 2000,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    fade: true,
-    autoplay: true,
-    autoplaySpeed: 6000,
-    pauseOnHover: true,
-    arrows: false,
+  const scrollToSection = (id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
+
   return (
-    <>
-      <section className='banner-two'>
-        <div className='banner-two__slider swiper'>
-          <Slider {...settings} ref={sliderRef} className='swiper-wrapper'>
-            <div className='swiper-slide'>
-              <div className='banner-two__slider-single'>
-                <div
-                  className='banner-two__slider-bg'
-                  style={{
-                    backgroundImage:
-                      "url(/assets/images/banner/banner-two-bg.png)",
+    <section id='home' className='banner-two banner-two--impact-bridge'>
+      <div className='container'>
+        <div className='row align-items-center gutter-30'>
+          <div className='col-12 col-lg-7 order-2 order-lg-1'>
+            <div className='hero-copy'>
+              <span className='hero-identity'>
+                Al-Khadija Foundation Trust Pakistan · Est. 2000
+              </span>
+              <h1>
+                Serving those who need{" "}
+                <span className='bottom-line'>care</span> most
+              </h1>
+              <p className='hero-lead'>
+                Healing with compassion in communities that cannot afford to
+                wait.
+              </p>
+              <div className='banner__content-cta cta'>
+                <a
+                  href='#donate'
+                  aria-label='donate now'
+                  title='donate now'
+                  className='btn--primary'
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection("donate");
                   }}
-                ></div>
-                <div className='container'>
-                  <div className='row'>
-                    <div className='col-12 col-md-9 col-lg-7 col-xxl-6'>
-                      <div className='banner-two__slider-content'>
-                        <span className='sub-title'>
-                          <i className='icon-donation' />
-                          Start donating poor people
-                        </span>
-                        <h1>
-                          Giving help <br />
-                          To Those <span className='bottom-line'>peoples</span>
-                          Who Need It.
-                        </h1>
-                        <div className='banner__content-cta cta'>
-                          <Link
-                            href='/our-causes'
-                            aria-label='about us'
-                            title='about us'
-                            className='btn--tertiary'
-                          >
-                            Discover More{" "}
-                            <i className='fa-solid fa-arrow-right' />
-                          </Link>
-                          <Link
-                            href='/contact-us'
-                            aria-label='contact us'
-                            title='contact us'
-                            className='btn--primary'
-                          >
-                            Get A Quote{" "}
-                            <i className='fa-solid fa-arrow-right' />
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                >
+                  Donate Now <i className='fa-solid fa-arrow-right' />
+                </a>
+                <a
+                  href='#journey'
+                  className='hero-quiet-link'
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection("journey");
+                  }}
+                >
+                  See our journey
+                </a>
               </div>
             </div>
-            <div className='swiper-slide'>
-              <div className='banner-two__slider-single'>
-                <div
-                  className='banner-two__slider-bg'
-                  style={{
-                    backgroundImage:
-                      "url(/assets/images/banner/banner-one-bg.png)",
-                  }}
-                ></div>
-                <div className='container'>
-                  <div className='row'>
-                    <div className='col-12 col-md-9  col-lg-7 col-xxl-6'>
-                      <div className='banner-two__slider-content'>
-                        <span className='sub-title'>
-                          <i className='icon-donation' />
-                          Start donating poor people
-                        </span>
-                        <h1>
-                          Giving help <br />
-                          To Those <span className='bottom-line'>peoples</span>
-                          Who Need It.
-                        </h1>
-                        <div className='banner__content-cta cta'>
-                          <Link
-                            href='/our-causes'
-                            aria-label='about us'
-                            title='about us'
-                            className='btn--tertiary'
-                          >
-                            Discover More{" "}
-                            <i className='fa-solid fa-arrow-right' />
-                          </Link>
-                          <Link
-                            href='/contact-us'
-                            aria-label='contact us'
-                            title='contact us'
-                            className='btn--primary'
-                          >
-                            Get A Quote{" "}
-                            <i className='fa-solid fa-arrow-right' />
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          </div>
+          <div className='col-12 col-lg-5 order-1 order-lg-2'>
+            <div className='hero-photo'>
+              <img src='/section1.png' alt='Care and family at Al-Khadija' />
             </div>
-            <div className='swiper-slide'>
-              <div className='banner-two__slider-single'>
-                <div
-                  className='banner-two__slider-bg'
-                  style={{
-                    backgroundImage:
-                      "url(/assets/images/banner/banner-two-bg.png)",
-                  }}
-                ></div>
-                <div className='container'>
-                  <div className='row'>
-                    <div className='col-12 col-md-9 col-lg-7 col-xxl-6'>
-                      <div className='banner-two__slider-content'>
-                        <span className='sub-title'>
-                          <i className='icon-donation' />
-                          Start donating poor people
-                        </span>
-                        <h1>
-                          Giving help <br />
-                          To Those <span className='bottom-line'>peoples</span>
-                          Who Need It.
-                        </h1>
-                        <div className='banner__content-cta cta'>
-                          <Link
-                            href='/our-causes'
-                            aria-label='about us'
-                            title='about us'
-                            className='btn--tertiary'
-                          >
-                            Discover More{" "}
-                            <i className='fa-solid fa-arrow-right' />
-                          </Link>
-                          <Link
-                            href='/contact-us'
-                            aria-label='contact us'
-                            title='contact us'
-                            className='btn--primary'
-                          >
-                            Get A Quote{" "}
-                            <i className='fa-solid fa-arrow-right' />
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className='swiper-slide'>
-              <div className='banner-two__slider-single'>
-                <div
-                  className='banner-two__slider-bg'
-                  style={{
-                    backgroundImage:
-                      "url(/assets/images/banner/banner-one-bg.png)",
-                  }}
-                ></div>
-                <div className='container'>
-                  <div className='row'>
-                    <div className='col-12 col-md-9 col-lg-7 col-xxl-6'>
-                      <div className='banner-two__slider-content'>
-                        <span className='sub-title'>
-                          <i className='icon-donation' />
-                          Start donating poor people
-                        </span>
-                        <h1>
-                          Giving help <br />
-                          To Those <span className='bottom-line'>peoples</span>
-                          Who Need It.
-                        </h1>
-                        <div className='banner__content-cta cta'>
-                          <Link
-                            href='/our-causes'
-                            aria-label='about us'
-                            title='about us'
-                            className='btn--tertiary'
-                          >
-                            Discover More{" "}
-                            <i className='fa-solid fa-arrow-right' />
-                          </Link>
-                          <Link
-                            href='/contact-us'
-                            aria-label='contact us'
-                            title='contact us'
-                            className='btn--primary'
-                          >
-                            Get A Quote{" "}
-                            <i className='fa-solid fa-arrow-right' />
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Slider>
+          </div>
         </div>
-        <div className='slider-navigation d-none d-md-flex'>
-          <button
-            onClick={() => sliderRef.current.slickPrev()}
-            type='button'
-            aria-label='prev slide'
-            title='prev slide'
-            className='prev-banner slider-btn'
-          >
-            <i className='fa-solid fa-arrow-left' />
-          </button>
-          <button
-            onClick={() => sliderRef.current.slickNext()}
-            type='button'
-            aria-label='next slide'
-            title='next slide'
-            className='next-banner slider-btn slider-btn-next'
-          >
-            <i className='fa-solid fa-arrow-right' />
-          </button>
-        </div>
-        <div className='shape'>
-          <img src='/assets/images/shape.png' alt='Image_inner' />
-        </div>
-        <div
-          className='shape-left'
-          data-aos='fade-right'
-          data-aos-duration={1000}
-          data-aos-delay={300}
-        >
-          <img
-            src='/assets/images/banner/banner-two-shape.png'
-            alt='Image_inner'
-          />
-        </div>
-        <div className='sprade-shape'>
-          <img
-            src='assets/images/sprade-base.png'
-            alt='Image_inner'
-            className='base-img'
-            data-aos='zoom-in'
-            data-aos-duration={1000}
-          />
-        </div>
-        <div className='unity'>
-          <img src='/assets/images/unity.png' alt='Image_inner' />
-        </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 

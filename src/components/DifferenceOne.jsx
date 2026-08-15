@@ -1,259 +1,149 @@
-"use client";
 import Link from "next/link";
-import React, { useRef } from "react";
-import Slider from "react-slick";
+
+const facilities = [
+  {
+    title: "Outdoor / OPD",
+    text: "Quality care since January 2000 — about 200 patients a day, with MBBS doctors for those who need it most.",
+    icon: "icon-health",
+    accent: "#ff5528",
+    image: "/facilities/outdoor.jpg",
+  },
+  {
+    title: "Dental Care",
+    text: "Sterilized B-Class Autoclave setup with a dedicated BDS doctor for safe, dignified dental treatment.",
+    icon: "icon-support-hand",
+    accent: "#122f2a",
+    image: "/facilities/dental.jpg",
+  },
+  {
+    title: "Visiting Consultants",
+    text: "Weekly Eye Surgeon and Dermatologist visits — specialist care brought closer to our community.",
+    icon: "icon-review",
+    accent: "#ffc107",
+    image: "/facilities/visiting.jpg",
+  },
+  {
+    title: "Pathology Lab",
+    text: "Since 2007 — basic tests at 50% discount, free for deserving widows and orphans, free sugar tests every Thursday.",
+    icon: "icon-documents",
+    accent: "#046a58",
+    image: "/facilities/pathology.jpg",
+  },
+  {
+    title: "Ambulance",
+    text: "Emergency pick & drop for patients who cannot afford private ambulances — plus first aid in times of need.",
+    icon: "icon-spread-love",
+    accent: "#00715d",
+    image: "/facilities/ambulance.jpg",
+  },
+];
+
+const DecorativeRing = ({ color }) => (
+  <svg
+    className='facility-circle__ring'
+    viewBox='0 0 200 200'
+    aria-hidden='true'
+  >
+    <circle
+      cx='100'
+      cy='100'
+      r='94'
+      fill='none'
+      stroke={color}
+      strokeWidth='5'
+      strokeLinecap='round'
+      strokeDasharray='48 14 8 14 28 16 10 18'
+    />
+    <circle
+      cx='100'
+      cy='100'
+      r='94'
+      fill='none'
+      stroke={color}
+      strokeWidth='4'
+      strokeLinecap='round'
+      strokeDasharray='0 70 0 95 0 120'
+      opacity='0.95'
+    />
+  </svg>
+);
 
 const DifferenceOne = () => {
-  const sliderRef = useRef(null);
-  const settings = {
-    infinite: true,
-    speed: 1000,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    pauseOnHover: true,
-    responsive: [
-      {
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-      {
-        breakpoint: 576,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-    ],
-  };
   return (
-    <>
-      <section className='difference'>
-        <div className='container'>
-          <div className='row justify-content-center'>
-            <div className='col-12 col-lg-10 col-xl-8'>
+    <section id='facilities' className='difference difference--facilities'>
+      <div className='container'>
+        <div className='row justify-content-center'>
+          <div className='col-12 col-lg-10 col-xl-8'>
+            <div
+              className='section__header text-center'
+              data-aos='fade-up'
+              data-aos-duration={1000}
+            >
+              <span className='sub-title'>
+                <i className='icon-donation' />
+                Our Facilities
+              </span>
+              <h2 className='title-animation_inner'>
+                Care under one roof — for every{" "}
+                <span>life</span> that walks in
+              </h2>
+              <p>
+                From outdoor clinics to ambulance support, Al-Khadija serves the
+                poverty-stricken with dignity, skill, and compassion.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className='difference__inner'>
+          <div className='row justify-content-center gutter-30'>
+            {facilities.map((item, index) => (
               <div
-                className='section__header text-center'
+                className='col-12 col-sm-6 col-xl-4'
+                key={item.title}
                 data-aos='fade-up'
                 data-aos-duration={1000}
+                data-aos-delay={index * 100}
               >
-                <span className='sub-title'>
-                  <i className='icon-donation' />
-                  Start donating poor people
-                </span>
-                <h2 className='title-animation_inner'>
-                  Charity With Difference
-                </h2>
-                <p>
-                  Join our monthly giving program to provide consistent support
-                  to our initiatives. Regular contributions, no matter the size,
-                  help us plan and sustain long-term projects.
-                </p>
+                <article className='facility-item'>
+                  <div className='facility-circle'>
+                    <div className='facility-circle__photo'>
+                      <img src={item.image} alt={item.title} />
+                    </div>
+                    <DecorativeRing color={item.accent} />
+                    <span
+                      className='facility-circle__badge'
+                      style={{ backgroundColor: item.accent }}
+                      aria-hidden='true'
+                    >
+                      <i className={item.icon} />
+                    </span>
+                  </div>
+                  <div className='facility-item__body'>
+                    <h5>
+                      <Link href='/contact-us'>{item.title}</Link>
+                    </h5>
+                    <p>{item.text}</p>
+                  </div>
+                </article>
               </div>
-            </div>
+            ))}
           </div>
         </div>
-        <div className='difference__inner'>
-          <div className='container'>
-            <div className='row'>
-              <div className='col-12'>
-                <div className='difference__slider swiper'>
-                  <Slider
-                    {...settings}
-                    ref={sliderRef}
-                    className='swiper-wrapper'
-                  >
-                    <div className='swiper-slide px-2'>
-                      <div className='difference__single-wrapper'>
-                        <div
-                          className='difference__single difference__single-first'
-                          style={{
-                            backgroundImage:
-                              "url(/assets/images/difference/bg-one.png)",
-                          }}
-                        >
-                          <div className='difference__single-thumb'>
-                            <i className='icon-education' />
-                          </div>
-                          <div className='difference__single-content'>
-                            <h5>
-                              <Link href='/cause-details'>Child Education</Link>
-                            </h5>
-                            <p>
-                              Set up a secure and user-friendly online donation
-                              platform that accepts multiple
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className='swiper-slide px-2'>
-                      <div className='difference__single-wrapper'>
-                        <div
-                          className='difference__single difference__single-second'
-                          style={{
-                            backgroundImage:
-                              "url(/assets/images/difference/bg-two.png)",
-                          }}
-                        >
-                          <div className='difference__single-thumb'>
-                            <i className='icon-food' />
-                          </div>
-                          <div className='difference__single-content'>
-                            <h5>
-                              <Link href='/cause-details'>Healthy Food</Link>
-                            </h5>
-                            <p>
-                              Set up a secure and user-friendly online donation
-                              platform that accepts multiple
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className='swiper-slide px-2'>
-                      <div className='difference__single-wrapper'>
-                        <div
-                          className='difference__single difference__single-third '
-                          style={{
-                            backgroundImage:
-                              "url(/assets/images/difference/bg-three.png)",
-                          }}
-                        >
-                          <div className='difference__single-thumb'>
-                            <i className='icon-health' />
-                          </div>
-                          <div className='difference__single-content'>
-                            <h5>
-                              <Link href='/cause-details'>Medical Care</Link>
-                            </h5>
-                            <p>
-                              Set up a secure and user-friendly online donation
-                              platform that accepts multiple
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className='swiper-slide px-2'>
-                      <div className='difference__single-wrapper'>
-                        <div
-                          className='difference__single difference__single-first'
-                          style={{
-                            backgroundImage:
-                              "url(/assets/images/difference/bg-one.png)",
-                          }}
-                        >
-                          <div className='difference__single-thumb'>
-                            <i className='icon-education' />
-                          </div>
-                          <div className='difference__single-content'>
-                            <h5>
-                              <Link href='/cause-details'>Child Education</Link>
-                            </h5>
-                            <p>
-                              Set up a secure and user-friendly online donation
-                              platform that accepts multiple
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className='swiper-slide px-2'>
-                      <div className='difference__single-wrapper'>
-                        <div
-                          className='difference__single difference__single-second'
-                          style={{
-                            backgroundImage:
-                              "url(/assets/images/difference/bg-two.png)",
-                          }}
-                        >
-                          <div className='difference__single-thumb'>
-                            <i className='icon-food' />
-                          </div>
-                          <div className='difference__single-content'>
-                            <h5>
-                              <Link href='/cause-details'>Healthy Food</Link>
-                            </h5>
-                            <p>
-                              Set up a secure and user-friendly online donation
-                              platform that accepts multiple
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className='swiper-slide px-2'>
-                      <div className='difference__single-wrapper'>
-                        <div
-                          className='difference__single difference__single-third '
-                          style={{
-                            backgroundImage:
-                              "url(/assets/images/difference/bg-three.png)",
-                          }}
-                        >
-                          <div className='difference__single-thumb'>
-                            <i className='icon-health' />
-                          </div>
-                          <div className='difference__single-content'>
-                            <h5>
-                              <Link href='/cause-details'>Medical Care</Link>
-                            </h5>
-                            <p>
-                              Set up a secure and user-friendly online donation
-                              platform that accepts multiple
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </Slider>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className='slider-navigation'>
-            <button
-              onClick={() => sliderRef.current.slickPrev()}
-              type='button'
-              aria-label='prev slide'
-              title='prev slide'
-              className='prev-difference slider-btn'
-            >
-              <i className='fa-solid fa-arrow-left' />
-            </button>
-            <button
-              onClick={() => sliderRef.current.slickNext()}
-              type='button'
-              aria-label='next slide'
-              title='next slide'
-              className='next-difference slider-btn slider-btn-next'
-            >
-              <i className='fa-solid fa-arrow-right' />
-            </button>
-          </div>
-        </div>
-        <div
-          className='shape-hand'
-          data-aos='fade-right'
-          data-aos-duration={1000}
-          data-aos-delay={300}
-        >
-          <img
-            src='/assets/images/difference/shape-hand.png'
-            alt='Image_inner'
-          />
-        </div>
-      </section>
-    </>
+      </div>
+
+      <div
+        className='shape-hand'
+        data-aos='fade-right'
+        data-aos-duration={1000}
+        data-aos-delay={300}
+      >
+        <img
+          src='/assets/images/difference/shape-hand.png'
+          alt='Image_inner'
+        />
+      </div>
+    </section>
   );
 };
 
