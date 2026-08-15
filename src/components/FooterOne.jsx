@@ -151,6 +151,16 @@ const FooterOne = () => {
                       info@alkhadija.com
                     </a>
                   </li>
+                  <li>
+                    <a
+                      href='https://www.google.com/maps/search/?api=1&query=31.5371875,74.2808594'
+                      target='_blank'
+                      rel='noopener noreferrer'
+                    >
+                      <i className='fa-solid fa-location-dot' />
+                      Al-Khadija Medical Center, Shera Kot, Lahore
+                    </a>
+                  </li>
                 </ul>
               </div>
             </div>

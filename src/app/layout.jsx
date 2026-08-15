@@ -11,6 +11,9 @@ export const metadata = {
   title: "Al-Khadija Foundation Trust Pakistan",
   description:
     "Al-Khadija Foundation Trust Pakistan — care, dignity, and hope for those who need it most.",
+  icons: {
+    icon: "/ico.jpg",
+  },
 };
 
 export default function RootLayout({ children }) {

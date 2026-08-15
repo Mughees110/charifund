@@ -10,8 +10,8 @@ import AOSWrap from "@/helper/AOSWrap";
 import CustomCursor from "@/helper/CustomCursor";
 
 export const metadata = {
-  title: "Charifund | Nonprofit & Fundraising Charity NEXT JS Template",
-  description: "Nonprofit & Fundraising Charity NEXT JS Template.",
+  title: "Al-Khadija Foundation Trust Pakistan",
+  description: "Al-Khadija Foundation Trust Pakistan — care, dignity, and hope for those who need it most.",
 };
 
 const page = () => {

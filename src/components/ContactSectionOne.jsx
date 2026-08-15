@@ -2,6 +2,13 @@
 import { useState } from "react";
 
 const CONTACT_EMAIL = "info@alkhadija.com";
+const MAP_LAT = 31.5371875;
+const MAP_LNG = 74.2808594;
+const PLACE_NAME = "Al-Khadija Medical Center";
+const PLACE_ADDRESS =
+  "G7PJ+V8H, Nagra / Khuda-Bukhsh Road, Shera Kot, Lahore 54000, Pakistan";
+const MAP_EMBED = `https://maps.google.com/maps?q=${MAP_LAT},${MAP_LNG}&z=16&hl=en&output=embed`;
+const MAP_LINK = `https://www.google.com/maps/search/?api=1&query=${MAP_LAT},${MAP_LNG}`;
 
 const ContactSectionOne = () => {
   const [status, setStatus] = useState("idle"); // idle | loading | success | error
@@ -113,8 +120,16 @@ const ContactSectionOne = () => {
                     <i className='fa-solid fa-location-dot' />
                   </div>
                   <div className='content'>
-                    <h6>Location</h6>
-                    <p>Lahore, Pakistan</p>
+                    <h6>{PLACE_NAME}</h6>
+                    <p>
+                      <a
+                        href={MAP_LINK}
+                        target='_blank'
+                        rel='noopener noreferrer'
+                      >
+                        {PLACE_ADDRESS}
+                      </a>
+                    </p>
                   </div>
                 </div>
               </div>
@@ -224,6 +239,31 @@ const ContactSectionOne = () => {
                 </div>
               </form>
             </div>
+          </div>
+        </div>
+
+        <div
+          className='contact-map'
+          data-aos='fade-up'
+          data-aos-duration={1000}
+          data-aos-delay={150}
+        >
+          <div className='contact-map__frame'>
+            <iframe
+              title={`${PLACE_NAME} location map`}
+              src={MAP_EMBED}
+              loading='lazy'
+              referrerPolicy='no-referrer-when-downgrade'
+              allowFullScreen
+            />
+            <a
+              className='contact-map__expand'
+              href={MAP_LINK}
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              Expand <i className='fa-solid fa-up-right-and-down-left-from-center' />
+            </a>
           </div>
         </div>
       </div>

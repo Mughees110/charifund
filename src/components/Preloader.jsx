@@ -13,7 +13,7 @@ const Preloader = () => {
       {active ? (
         <div className='preloader'>
           <i className='icon-donation' />
-          <p>CHARIFUND</p>
+          <p>AL-KHADIJA</p>
         </div>
       ) : (
         <div></div>
