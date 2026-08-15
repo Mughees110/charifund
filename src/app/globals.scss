@@ -21,6 +21,14 @@ body.dark-body {
   --brand-soft-3: #fff5f0;
 }
 
+/* No custom cursor on touch / coarse pointers (mobile) */
+@media (hover: none), (pointer: coarse) {
+  .mouseCursor {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
+
 /* Sticky header offset for section jump links */
 #home,
 #impact,
@@ -397,6 +405,11 @@ body.dark-body {
       margin-bottom: 0;
       max-width: 14ch;
     }
+
+    .bottom-line {
+      background-image: none !important;
+      color: var(--brand-green);
+    }
   }
 
   .hero-photo {
@@ -584,6 +597,11 @@ body.dark-body {
   background: #ffffff;
   background-image: none;
 
+  /* Theme decorative circles behind vision/mission icons */
+  .help__content-icon .thumb::before {
+    display: none;
+  }
+
   .help__thumb-inner {
     min-height: 640px;
   }
@@ -610,10 +628,10 @@ body.dark-body {
     margin-inline-start: auto;
 
     .video-btn-wrapper {
-      top: auto;
-      bottom: 16px;
-      inset-inline-start: 16px;
-      transform: none;
+      top: 50%;
+      bottom: auto;
+      inset-inline-start: 50%;
+      transform: translate(-50%, -50%);
 
       .open-video-popup {
         width: 52px;
@@ -671,12 +689,14 @@ body.dark-body {
     }
 
     .thumb-lg .video-btn-wrapper {
-      bottom: 10px;
-      inset-inline-start: 10px;
+      top: 50%;
+      bottom: auto;
+      inset-inline-start: 50%;
+      transform: translate(-50%, -50%);
 
       .open-video-popup {
-        width: 40px;
-        height: 40px;
+        width: 44px;
+        height: 44px;
 
         i {
           font-size: 12px;

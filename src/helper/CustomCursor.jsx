@@ -1,16 +1,26 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const CustomCursor = () => {
   const cursorOuterRef = useRef(null);
   const cursorInnerRef = useRef(null);
-  console.warn = () => {};
-  console.error = () => {};
+  const [enabled, setEnabled] = useState(false);
+
   useEffect(() => {
+    // Desktop fine pointer only — hide blue dot on touch/mobile
+    const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const sync = () => setEnabled(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
+  useEffect(() => {
+    if (!enabled) return;
+
     const cursorOuter = cursorOuterRef.current;
     const cursorInner = cursorInnerRef.current;
-
     if (!cursorOuter || !cursorInner) return;
 
     let mouseX = 0;
@@ -44,7 +54,6 @@ const CustomCursor = () => {
       el.addEventListener("mouseleave", removeHoverClass);
     });
 
-    // Make cursors visible
     cursorInner.style.visibility = "visible";
     cursorOuter.style.visibility = "visible";
 
@@ -55,12 +64,14 @@ const CustomCursor = () => {
         el.removeEventListener("mouseleave", removeHoverClass);
       });
     };
-  }, []);
+  }, [enabled]);
+
+  if (!enabled) return null;
 
   return (
     <>
-      <div ref={cursorOuterRef} className='mouseCursor cursor-outer'></div>
-      <div ref={cursorInnerRef} className='mouseCursor cursor-inner'></div>
+      <div ref={cursorOuterRef} className='mouseCursor cursor-outer' />
+      <div ref={cursorInnerRef} className='mouseCursor cursor-inner' />
     </>
   );
 };

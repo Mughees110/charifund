@@ -181,7 +181,7 @@ const HelpOne = () => {
           channel='youtube'
           autoplay
           isOpen={isOpen}
-          videoId='XxVg_s8xAms'
+          videoId='AJ764QGycv8'
           onClose={() => setIsOpen(false)}
           allowFullScreen
         />
